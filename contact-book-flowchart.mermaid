@@ -1,0 +1,48 @@
+flowchart TD
+    A[Start] --> B{Display Menu}
+    B --> |Option 1| C[Add Contact]
+    B --> |Option 2| D[View Contacts]
+    B --> |Option 3| E[Search Contact]
+    B --> |Option 4| F[Remove Contact]
+    B --> |Option 5| G[Update Contact]
+    B --> |Option 0| H[Exit Program]
+
+    C --> |Validate Inputs| I{Input Valid?}
+    I --> |Yes| J[Save Contact to CSV]
+    I --> |No| K[Show Error Message]
+    J --> B
+    K --> B
+
+    D --> L{Contacts Exist?}
+    L --> |Yes| M[Display Contact List]
+    L --> |No| N[Show 'No Contacts' Message]
+    M --> B
+    N --> B
+
+    E --> O[Enter Search Query]
+    O --> P{Matching Contacts?}
+    P --> |Yes| Q[Display Search Results]
+    P --> |No| R[Show 'No Contacts' Message]
+    Q --> B
+    R --> B
+
+    F --> S[Enter Phone to Remove]
+    S --> T{Contact Found?}
+    T --> |Yes| U[Remove Contact from CSV]
+    T --> |No| V[Show 'Contact Not Found']
+    U --> B
+    V --> B
+
+    G --> W[Enter Phone/Email to Update]
+    W --> X{Contact Found?}
+    X --> |Yes| Y[Display Current Details]
+    X --> |No| Z[Show 'Contact Not Found']
+    Y --> AA[Enter New Details]
+    AA --> AB{Inputs Valid?}
+    AB --> |Yes| AC[Update Contact in CSV]
+    AB --> |No| AD[Show Validation Error]
+    AC --> B
+    AD --> B
+    Z --> B
+
+    H --> AE[End Program]
